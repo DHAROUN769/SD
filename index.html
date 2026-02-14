@@ -245,9 +245,16 @@ p{
 
 <body>
 
+
+<!-- BACKGROUND MUSIC -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
 <!-- PAGE 1 -->
 <div class="container active" id="screen-intro">
-    <h1>Hey Azagii 😅🤭✨</h1>
+    <h1>Hey AZAGII 😅🤭✨</h1>
     <p> Ungaluku oru china suprisee😜😅🙈  .</p>
     <button class="btn" onclick="nextScreen('screen-letter')"> Arambikalama 😽💖</button>
 </div>
@@ -289,9 +296,10 @@ p{
         <div class="highlight">You & Me ❤️</div>
         <div class="message"> Today,Tomorrow, and at the end of my life , 
         YOU ARE ALWAYS MY 1st LOVE GAaaaa 🙈🙈💖😉💘 </div>
-       <button class="btn" onclick="nextScreen('final-page')">
-    Kadaisiyaaaa!!.... ➜
+      <button class="btn" onclick="goFinal()">
+   Kadaisiyaaa!!... ➜
 </button>
+
 
     </div>
 </div>
@@ -301,7 +309,7 @@ const loveLetterText=`Hi kozanthaii,
  Enku entha perfect life lam vena ga! , just 
   unga kudaa happy ah daily pesitu jolly ah eruntha pothum Mam  
   as a good and best frnd ah .So, this is what i expect from you mam !!
-   Na ungala nala pathupan ga , like ungaluku pudichathu yelam theriji, ungala kan kangala vidama pathupan 
+   Na ungala nala pathupan ga , like ungaluku pudichathu yelam theriji, ungala  kankalanga vidama pathupan 
   and ungala sirika vachiteey erupan life full ah ..Na ungalukaga kandupudichathu 
   ethann, enku therija way of expressing love and proposing you ga 
   3X3=9 --> Will you be mine🙈🙈😳?
@@ -451,8 +459,16 @@ const observer = new MutationObserver(()=>{
   }
 });
 observer.observe(document.body,{subtree:true,attributes:true});
+
+function goFinal(){
+    nextScreen('final-page');
+    music.play();
+}
+
+
 </script>
 
 </body>
 
 </html>
+

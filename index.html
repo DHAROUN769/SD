@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Forever Valentine 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary-color:#e31b6d;
+    --secondary-color:#ff99ac;
+    --bg-gradient:linear-gradient(135deg,#2e001f 0%,#680026 100%);
+    --glass-bg:rgba(255,255,255,.05);
+    --glass-border:rgba(255,255,255,.1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg-gradient);
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+/* ORIGINAL CONTAINER SYSTEM */
+.container{
+    display:none;
+    background:var(--glass-bg);
+    backdrop-filter:blur(15px);
+    border:1px solid var(--glass-border);
+    padding:2.5rem;
+    border-radius:25px;
+    text-align:center;
+    max-width:600px;
+    width:90%;
+}
+
+.container.active{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+    font-family:'Parisienne',cursive;
+    font-size:3rem;
+    margin-bottom:1.5rem;
+    color:#ff99ac;
+}
+
+p{
+    font-size:1.1rem;
+    margin-bottom:1.5rem;
+    color:#ddd;
+}
+
+.btn{
+    padding:12px 35px;
+    border-radius:50px;
+    border:none;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff3366,#ff6b6b);
+    color:#fff;
+    font-size:1.1rem;
+    font-weight:600;
+    margin:10px;
+}
+
+/* TYPEWRITER */
+.letter-content{
+    font-family:'Dancing Script',cursive;
+    font-size:1.6rem;
+    background:#fff;
+    color:#333;
+    padding:25px;
+    border-radius:8px;
+    min-height:200px;
+    width:100%;
+}
+
+.cursor::after{content:'|';animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+
+.proposal-btns{display:flex;gap:20px}
+#noBtn{background:#555}
+
+/* ================= PAGE 6 STYLES (UNCHANGED) ================= */
+.page{
+    display:none;
+    width:100%;
+    height:100%;
+    justify-content:center;
+    align-items:center;
+}
+
+.page.active{
+    display:flex;
+}
+
+.page6-container{
+    text-align:center;
+    animation:fadeIn 2s ease;
+}
+
+.page6-container h1{
+    font-size:48px;
+    color:#e91e63;
+}
+
+.subtitle{
+    color:#555;
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.highlight{
+    font-size:28px;
+    color:#ff4081;
+    margin-bottom:10px;
+}
+
+.message{
+    color:#777;
+    margin-bottom:35px;
+}
+
+/* ================= FINAL PAGE (TEDDY SCENE STYLES) ================= */
+
+.scene{
+  width:95%;
+  max-width:900px;
+  height:480px;
+  background:#f7f6f2;
+  border-radius:30px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* TEDDY */
+.teddy{position:absolute;left:40px;bottom:90px}
+.t-head{width:70px;height:70px;background:#c49a6c;border-radius:50%;position:relative}
+.eye{width:6px;height:6px;background:#000;border-radius:50%;position:absolute;top:28px}
+.eye.l{left:18px}
+.eye.r{right:18px}
+.nose{width:10px;height:8px;background:#000;border-radius:50%;position:absolute;top:38px;left:30px}
+.t-body{width:60px;height:70px;background:#c49a6c;border-radius:20px;margin:auto}
+.hand{position:absolute;right:-30px;top:55px;width:30px;height:6px;background:#c49a6c;border-radius:10px}
+
+/* HEART */
+.heart{position:absolute;width:14px;height:14px;background:crimson;transform:rotate(-45deg)}
+.heart::before,.heart::after{
+  content:"";
+  position:absolute;
+  width:14px;height:14px;
+  background:crimson;
+  border-radius:50%;
+}
+.heart::before{top:-7px}
+.heart::after{left:7px}
+
+.heart-area{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:260px;height:220px;
+}
+
+.fixed{animation:pulse 1.6s infinite}
+@keyframes pulse{
+  0%,100%{transform:scale(1) rotate(-45deg)}
+  50%{transform:scale(1.15) rotate(-45deg)}
+}
+
+/* TEXT */
+.love-text{
+  position:absolute;
+  bottom:25px;
+  width:100%;
+  text-align:center;
+  font-size:28px;
+  color:crimson;
+  opacity:0;
+  animation:fadeText 2s forwards;
+  animation-delay:6s;
+}
+@keyframes fadeText{to{opacity:1}}
+
+/* PETALS */
+.petal{
+  position:absolute;
+  top:-20px;
+  font-size:18px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(600px) rotate(360deg)}
+}
+
+/* FIREWORK */
+.firework{
+  position:absolute;
+  width:6px;height:6px;
+  border-radius:50%;
+  box-shadow:
+    0 0 crimson,
+    20px 0 hotpink,
+    -20px 0 red,
+    0 20px pink,
+    0 -20px deeppink;
+  animation:explode 1.2s forwards;
+}
+@keyframes explode{
+  to{transform:scale(2.5);opacity:0}
+}
+
+.controls{
+  position:absolute;
+  top:15px;right:15px;
+}
+.controls button{
+  padding:8px 14px;
+  border:none;
+  border-radius:20px;
+  background:crimson;
+  color:white;
+  cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="container active" id="screen-intro">
+    <h1>Hey Beautiful ✨</h1>
+    <p>I have something special to show you.</p>
+    <button class="btn" onclick="nextScreen('screen-letter')">Start Journey ❤️</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container" id="screen-letter">
+    <h1>For You 💌</h1>
+    <div class="letter-content">
+        <span id="typewriter-text"></span><span class="cursor"></span>
+    </div>
+    <button class="btn" id="letter-next-btn" style="opacity:0;pointer-events:none" onclick="nextScreen('screen-proposal')">
+        One Last Thing...
+    </button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="container" id="screen-proposal">
+    <h1>Will You Be My Valentine? 🌹</h1>
+    <p>You are my everything.</p>
+    <div class="proposal-btns">
+        <button class="btn" onclick="acceptProposal()">YES 😍</button>
+        <button class="btn" id="noBtn" onmouseover="dodgeButton()">No 😢</button>
+    </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="container" id="screen-celebration">
+    <h1>I Knew It! 💖</h1>
+    <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif" style="width:60%;border-radius:10px;margin-bottom:20px;">
+    <p><b>I love you so much babyyyyyyy!</b> 🥰</p>
+    <button class="btn" onclick="nextScreen('page6')">ula vango ➜</button>
+</div>
+
+<!-- ================= PAGE 6 (YOUR CODE ADDED) ================= -->
+<div class="page" id="page6">
+    <div class="page6-container">
+        <h1>Happy Valentine’s Day 💕</h1>
+        <div class="subtitle">To the one who owns my heart</div>
+        <div class="highlight">You & Me ❤️</div>
+        <div class="message">Forever isn’t long enough with you.</div>
+       <button class="btn" onclick="nextScreen('final-page')">
+    ula vango ➜
+</button>
+
+    </div>
+</div>
+
+<script>
+const loveLetterText=`Dearest Love,
+
+From the moment I met you, my world changed.
+Your smile is my favorite sight,
+your laugh my favorite sound.
+
+I want forever with you...
+So I have one question ❤️`;
+
+let index=0;
+
+function nextScreen(id){
+    document.querySelectorAll('.container,.page').forEach(e=>e.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if(id==='screen-letter')startTypewriter();
+}
+
+function startTypewriter(){
+    index=0;
+    document.getElementById('typewriter-text').innerHTML='';
+    type();
+}
+
+function type(){
+    if(index<loveLetterText.length){
+        const ch=loveLetterText[index++];
+        document.getElementById('typewriter-text').innerHTML+=ch==='\n'?'<br>':ch;
+        setTimeout(type,50);
+    }else{
+        document.getElementById('letter-next-btn').style.opacity=1;
+        document.getElementById('letter-next-btn').style.pointerEvents='auto';
+    }
+}
+
+function dodgeButton(){
+    const b=document.getElementById('noBtn');
+    b.style.position='fixed';
+    b.style.left=Math.random()*80+'vw';
+    b.style.top=Math.random()*80+'vh';
+}
+
+function acceptProposal(){
+    nextScreen('screen-celebration');
+}
+</script>
+<!-- ================= FINAL PAGE ================= -->
+<div class="page" id="final-page" style="background:#000">
+  <div class="scene" id="scene">
+
+    <div class="controls">
+      <button onclick="toggleMusic()">🎶 Music</button>
+      <button onclick="restart()">🔁 Replay</button>
+    </div>
+
+    <!-- TEDDY -->
+    <div class="teddy">
+      <div class="t-head">
+        <div class="eye l"></div>
+        <div class="eye r"></div>
+        <div class="nose"></div>
+      </div>
+      <div class="hand"></div>
+      <div class="t-body"></div>
+    </div>
+
+    <!-- HEARTS -->
+    <div class="heart-area" id="heartArea"></div>
+    <div class="love-text" id="loveText"></div>
+  </div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ===== FINAL PAGE SCRIPT ===== */
+const name = "Swathi";
+const loveText=document.getElementById("loveText");
+loveText.innerHTML = `I Love You, ${name} 💖💞❤️`;
+
+const positions=[[60,0],[100,0],[160,0],[200,0],[30,30],[60,30],[100,30],[140,30],[180,30],[220,30],[60,60],[100,60],[140,60],[180,60],[100,100],[140,100],[120,140]];
+const scene=document.getElementById("scene");
+const area=document.getElementById("heartArea");
+let i=0;
+
+function flyHeart(){
+ if(i>=positions.length){setTimeout(fireworks,800);return;}
+ const h=document.createElement("div");
+ h.className="heart";
+ h.style.left="140px";
+ h.style.top="300px";
+ scene.appendChild(h);
+
+ const[x,y]=positions[i++];
+ setTimeout(()=>{
+   h.style.transition="1s";
+   h.style.left=area.offsetLeft+x+"px";
+   h.style.top=area.offsetTop+y+"px";
+ },50);
+
+ setTimeout(()=>{
+   h.classList.add("fixed");
+   area.appendChild(h);
+   h.style.left=x+"px";
+   h.style.top=y+"px";
+ },1100);
+
+ setTimeout(flyHeart,250);
+}
+
+function fireworks(){
+ for(let f=0;f<6;f++){
+   const fw=document.createElement("div");
+   fw.className="firework";
+   fw.style.left=(scene.offsetWidth/2+Math.random()*120-60)+"px";
+   fw.style.top=(scene.offsetHeight/2+Math.random()*100-50)+"px";
+   scene.appendChild(fw);
+   setTimeout(()=>fw.remove(),1200);
+ }
+}
+
+function restart(){
+ area.innerHTML="";
+ document.querySelectorAll(".heart").forEach(h=>h.remove());
+ i=0;
+ flyHeart();
+}
+
+function startFinal(){
+ flyHeart();
+ setInterval(()=>{
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌸";
+  p.style.left=Math.random()*scene.offsetWidth+"px";
+  p.style.animationDuration=6+Math.random()*4+"s";
+  scene.appendChild(p);
+  setTimeout(()=>p.remove(),10000);
+ },700);
+}
+
+const music=document.getElementById("music");
+function toggleMusic(){music.paused?music.play():music.pause();}
+
+/* AUTO START WHEN FINAL PAGE OPENS */
+const observer = new MutationObserver(()=>{
+  if(document.getElementById("final-page").classList.contains("active")){
+    startFinal();
+  }
+});
+observer.observe(document.body,{subtree:true,attributes:true});
+</script>
+
+</body>
+</html>
